@@ -1,6 +1,6 @@
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { initializeApp, getApps } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAUD3yn7qRKONyz1kVepElWVgtNLq23sW0",
@@ -13,19 +13,10 @@ const firebaseConfig = {
 };
 
 // Firebase app'i başlat
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
-// Auth instance'ı oluştur
+// Auth ve Firestore instance'larını oluştur
 const auth = getAuth(app);
-
-// Firestore instance'ı oluştur
 const db = getFirestore(app);
-
-// Auth yapılandırmasını kontrol et
-console.log('Firebase Auth initialized:', {
-  projectId: app.options.projectId,
-  authDomain: app.options.authDomain,
-  apiKey: app.options.apiKey ? 'Set' : 'Not set'
-});
 
 export { auth, db };  
