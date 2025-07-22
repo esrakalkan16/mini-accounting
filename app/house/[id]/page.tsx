@@ -4,7 +4,14 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebase';
 
-export default function HousePage({ params }: { params: { id: string } }) {
+interface HousePageProps {
+  params: {
+    id: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export default function HousePage({ params }: HousePageProps) {
   const router = useRouter();
 
   useEffect(() => {

@@ -8,7 +8,14 @@ import { House } from '@/lib/models/House';
 import { motion } from 'framer-motion';
 import { FaTrash, FaExclamationTriangle, FaArrowLeft, FaCheck } from 'react-icons/fa';
 
-export default function DeleteHousePage({ params }: { params: { id: string } }) {
+interface DeletePageProps {
+  params: {
+    id: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export default function DeleteHousePage({ params }: DeletePageProps) {
   const [house, setHouse] = useState<House | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');

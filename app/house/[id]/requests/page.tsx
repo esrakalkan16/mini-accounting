@@ -8,7 +8,14 @@ import { House } from '@/lib/models/House';
 import { motion } from 'framer-motion';
 import { FaUserPlus, FaCheck, FaTimes, FaArrowLeft } from 'react-icons/fa';
 
-export default function JoinRequestsPage({ params }: { params: { id: string } }) {
+interface RequestsPageProps {
+  params: {
+    id: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export default function JoinRequestsPage({ params }: RequestsPageProps) {
   const [house, setHouse] = useState<House | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
