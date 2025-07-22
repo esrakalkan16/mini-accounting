@@ -4,11 +4,6 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebase';
 
-export const metadata = {
-  title: 'Ev Detayları | Mini Muhasebe',
-  description: 'Ev detaylarını görüntüle ve yönet',
-}
-
 export default function HousePage({ params }: { params: { id: string } }) {
   const router = useRouter();
 
